@@ -1,11 +1,11 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine\Mapper;
+namespace ApiSkeletons\OAuth2\Doctrine\Mapper;
 
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use DoctrineModule\Persistence\ProvidesObjectManager as ProvidesObjectManagerTrait;
-use Zend\Config\Config;
-use Zend\ServiceManager\Exception;
+use Laminas\Config\Config;
+use Laminas\ServiceManager\Exception;
 
 class MapperManager implements
     ObjectManagerAwareInterface
@@ -27,15 +27,15 @@ class MapperManager implements
      * @var array
      */
     protected $invokableClasses = [
-        'user' => 'ZF\OAuth2\Doctrine\Mapper\User',
-        'client' => 'ZF\OAuth2\Doctrine\Mapper\Client',
-        'accesstoken' => 'ZF\OAuth2\Doctrine\Mapper\AccessToken',
-        'refreshtoken' => 'ZF\OAuth2\Doctrine\Mapper\RefreshToken',
-        'authorizationcode' => 'ZF\OAuth2\Doctrine\Mapper\AuthorizationCode',
-        'jwt' => 'ZF\OAuth2\Doctrine\Mapper\Jwt',
-        'jti' => 'ZF\OAuth2\Doctrine\Mapper\Jti',
-        'scope' => 'ZF\OAuth2\Doctrine\Mapper\Scope',
-        'publickey' => 'ZF\OAuth2\Doctrine\Mapper\PublicKey',
+        'user' => 'ApiSkeletons\OAuth2\Doctrine\Mapper\User',
+        'client' => 'ApiSkeletons\OAuth2\Doctrine\Mapper\Client',
+        'accesstoken' => 'ApiSkeletons\OAuth2\Doctrine\Mapper\AccessToken',
+        'refreshtoken' => 'ApiSkeletons\OAuth2\Doctrine\Mapper\RefreshToken',
+        'authorizationcode' => 'ApiSkeletons\OAuth2\Doctrine\Mapper\AuthorizationCode',
+        'jwt' => 'ApiSkeletons\OAuth2\Doctrine\Mapper\Jwt',
+        'jti' => 'ApiSkeletons\OAuth2\Doctrine\Mapper\Jti',
+        'scope' => 'ApiSkeletons\OAuth2\Doctrine\Mapper\Scope',
+        'publickey' => 'ApiSkeletons\OAuth2\Doctrine\Mapper\PublicKey',
     ];
 
     /**
@@ -99,7 +99,7 @@ class MapperManager implements
 
         // @codeCoverageIgnoreStart
         throw new Exception\InvalidServiceException(sprintf(
-            'Plugin of type %s is invalid; must implement ZF\OAuth2\Doctrine\Mapper\AbstractMapper',
+            'Plugin of type %s is invalid; must implement ApiSkeletons\OAuth2\Doctrine\Mapper\AbstractMapper',
             (is_object($command) ? get_class($command) : gettype($command))
         ));
         // @codeCoverageIgnoreEnd

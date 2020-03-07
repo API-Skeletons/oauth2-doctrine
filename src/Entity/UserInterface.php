@@ -5,7 +5,7 @@
  * this interface serves for what OAuth2 needs from the User
  */
 
-namespace ZF\OAuth2\Doctrine\Entity;
+namespace ApiSkeletons\OAuth2\Doctrine\Entity;
 
 /**
  * UserInterface

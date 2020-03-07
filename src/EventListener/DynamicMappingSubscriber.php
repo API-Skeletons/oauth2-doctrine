@@ -4,12 +4,12 @@
  * This doctrine event subscriber will join a user table to the client table
  * thereby freeing the user table from the OAuth2 contraints
  */
-namespace ZF\OAuth2\Doctrine\EventListener;
+namespace ApiSkeletons\OAuth2\Doctrine\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
-use Zend\Config\Config;
+use Laminas\Config\Config;
 use DoctrineModule\Persistence\ProvidesObjectManager;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 
@@ -87,7 +87,7 @@ class DynamicMappingSubscriber implements
 
             case $this->getConfig()->client_entity->entity:
                 // Add unique constriant for clientId based on column
-                // See https://github.com/TomHAnderson/zf-oauth2-doctrine/issues/24
+                // See https://github.com/TomHAnderson/api-tools-oauth2-doctrine/issues/24
                 $clientIdField = $this->getMapping()->Client->mapping->client_id->name;
 
                 $clientIdColumn = $metadata->columnNames[$clientIdField];
@@ -159,7 +159,7 @@ class DynamicMappingSubscriber implements
 
             case $this->getConfig()->scope_entity->entity:
                 // Add unique constriant for clientId based on column
-                // See https://github.com/TomHAnderson/zf-oauth2-doctrine/issues/24
+                // See https://github.com/TomHAnderson/api-tools-oauth2-doctrine/issues/24
                 $nameField = $this->getMapping()->Scope->mapping->scope->name;
                 $nameColumn = $metadata->columnNames[$nameField];
                 $indexName = $this->generateIdentifierName(

@@ -1,14 +1,14 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine\Mapper;
+namespace ApiSkeletons\OAuth2\Doctrine\Mapper;
 
+use DateTime;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\QueryBuilder;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use DoctrineModule\Persistence\ProvidesObjectManager as ProvidesObjectManagerTrait;
-use Doctrine\Common\Persistence\ObjectManager;
-use Zend\Config\Config;
-use DateTime;
 use Exception;
+use Laminas\Config\Config;
 
 class AbstractMapper implements
     ObjectManagerAwareInterface
@@ -16,7 +16,7 @@ class AbstractMapper implements
     use ProvidesObjectManagerTrait;
 
     /**
-     * @var ZF\OAuth2\Doctrine\Mapper\MapperManager
+     * @var ApiSkeletons\OAuth2\Doctrine\Mapper\MapperManager
      */
     protected $mapperManager;
 

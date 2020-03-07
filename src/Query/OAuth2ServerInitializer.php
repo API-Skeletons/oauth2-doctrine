@@ -1,20 +1,20 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine\Query;
+namespace ApiSkeletons\OAuth2\Doctrine\Query;
 
 use Interop\Container\ContainerInterface;
 use InvalidArgumentException;
-use Zend\ServiceManager\AbstractPluginManager;
-use Zend\ServiceManager\InitializerInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use ZF\OAuth2\Doctrine\Query\OAuth2ServerInterface;
+use Laminas\ServiceManager\AbstractPluginManager;
+use Laminas\ServiceManager\InitializerInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
+use Laminas\ApiTools\OAuth2\Doctrine\Query\OAuth2ServerInterface;
 
 class OAuth2ServerInitializer implements InitializerInterface
 {
     /**
      * @param ContainerInterface $container
      * @param mixed $instance
-     * @return \ZF\OAuth2\Doctrine\Query\OAuth2ServerInterface
+     * @return \Laminas\ApiTools\OAuth2\Doctrine\Query\OAuth2ServerInterface
      */
     public function __invoke(ContainerInterface $container, $instance)
     {
@@ -24,7 +24,7 @@ class OAuth2ServerInitializer implements InitializerInterface
     /**
      * @param mixed $instance
      * @param ServiceLocatorInterface $serviceLocator
-     * @return \ZF\OAuth2\Doctrine\Query\OAuth2ServerInterface
+     * @return \Laminas\ApiTools\OAuth2\Doctrine\Query\OAuth2ServerInterface
      */
     public function initialize($instance, ServiceLocatorInterface $serviceLocator)
     {
@@ -51,7 +51,7 @@ class OAuth2ServerInitializer implements InitializerInterface
             throw new InvalidArgumentException('Invalid container');
         }
 
-        $oAuth2ServerFactory = $container->get('ZF\OAuth2\Service\OAuth2Server');
+        $oAuth2ServerFactory = $container->get('Laminas\ApiTools\OAuth2\Service\OAuth2Server');
         $oAuth2Server = $oAuth2ServerFactory();
         $instance->setOAuth2Server($oAuth2Server);
 

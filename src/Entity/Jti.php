@@ -1,6 +1,6 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine\Entity;
+namespace ApiSkeletons\OAuth2\Doctrine\Entity;
 
 /**
  * Jti

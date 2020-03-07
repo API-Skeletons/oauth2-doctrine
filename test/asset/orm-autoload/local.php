@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'zf-mvc-auth' => [
+    'api-tools-mvc-auth' => [
         'authentication' => [
             'adapters' => [
                 'oauth2_doctrine' => [
-                    'adapter' => 'ZF\\MvcAuth\\Authentication\\OAuth2Adapter',
+                    'adapter' => 'Laminas\\ApiTools\\MvcAuth\\Authentication\\OAuth2Adapter',
                     'storage' => [
                         'storage' => 'oauth2.doctrineadapter.default',
                     ],

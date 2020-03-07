@@ -1,6 +1,6 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine\Query;
+namespace ApiSkeletons\OAuth2\Doctrine\Query;
 
 use OAuth2\Server as OAuth2Server;
 
