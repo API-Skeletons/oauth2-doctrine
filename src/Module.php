@@ -1,15 +1,15 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine;
+namespace ApiSkeletons\OAuth2\Doctrine;
 
+use ApiSkeletons\OAuth2\Doctrine\Adapter\DoctrineAdapterFactory;
 use Interop\Container\ContainerInterface;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\Config\Config;
-use Zend\Mvc\MvcEvent;
-use Zend\Loader\StandardAutoloader;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use ZF\OAuth2\Doctrine\Adapter\DoctrineAdapterFactory;
+use Laminas\ModuleManager\Feature\AutoloaderProviderInterface;
+use Laminas\ModuleManager\Feature\ConfigProviderInterface;
+use Laminas\Config\Config;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Loader\StandardAutoloader;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class Module implements
     AutoloaderProviderInterface,
@@ -22,11 +22,7 @@ class Module implements
      */
     public function getAutoloaderConfig()
     {
-        return [StandardAutoloader::class => ['namespaces' => [
-            __NAMESPACE__ => __DIR__,
-        ]
-        ]
-        ];
+        return [StandardAutoloader::class => ['namespaces' => [ __NAMESPACE__ => __DIR__]]];
     }
 
     /**
@@ -40,8 +36,8 @@ class Module implements
 
         return [
             'service_manager' => $provider->getDependencyConfig(),
-            'zf-apigility-doctrine-query-create-filter' => $provider->getQueryCreateFilterConfig(),
-            'zf-apigility-doctrine-query-provider' => $provider->getQueryProviderConfig(),
+            'api-skeletons-query-create-filter' => $provider->getQueryCreateFilterConfig(),
+            'api-skeletons-query-provider' => $provider->getQueryProviderConfig(),
         ];
     }
 
@@ -59,7 +55,7 @@ class Module implements
                 'oauth2.doctrineadapter.default' => function ($serviceManager) {
                     /** @var ServiceLocatorInterface | ContainerInterface $serviceManager */
                     $globalConfig = $serviceManager->get('Config');
-                    $config = new Config($globalConfig['zf-oauth2-doctrine']['default']);
+                    $config = new Config($globalConfig['api-skeletons-oauth2-doctrine']['default']);
                     /** @var DoctrineAdapterFactory $factory */
                     $factory = $serviceManager->get(DoctrineAdapterFactory::class);
                     $factory->setConfig($config);

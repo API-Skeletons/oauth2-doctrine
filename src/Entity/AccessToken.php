@@ -1,8 +1,8 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine\Entity;
+namespace ApiSkeletons\OAuth2\Doctrine\Entity;
 
-use Zend\Stdlib\ArraySerializableInterface;
+use Laminas\Stdlib\ArraySerializableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

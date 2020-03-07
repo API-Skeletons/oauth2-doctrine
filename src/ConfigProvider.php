@@ -1,13 +1,13 @@
 <?php
 
-namespace ZF\OAuth2\Doctrine;
+namespace ApiSkeletons\OAuth2\Doctrine;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 class ConfigProvider
 {
     /**
-     * Return general purpose zf-oauth2-doctrine configuration
+     * Return general purpose api-tools-oauth2-doctrine configuration
      *
      * @return array
      */
@@ -15,8 +15,8 @@ class ConfigProvider
     {
         return [
             'dependencies' => $this->getDependencyConfig(),
-            'zf-apigility-doctrine-query-create-filter' => $this->getQueryCreateFilterConfig(),
-            'zf-apigility-doctrine-query-provider' => $this->getQueryProviderConfig(),
+            'api-tools-doctrine-query-create-filter' => $this->getQueryCreateFilterConfig(),
+            'api-tools-doctrine-query-provider' => $this->getQueryProviderConfig(),
         ];
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<skipper version="3.2.15.1478" mvc="Without MVC" orm="Doctrine2">
-  <module name="\api-skeletons/zf-oauth2-doctrine" local-name="api-skeletons/zf-oauth2-doctrine" namespace="\ZF\OAuth2\Doctrine\Entity" local-namespace="ZF\OAuth2\Doctrine\Entity" export-format="Doctrine2Xml" export-path="../config/orm" uuid="e33a902b-9096-46f4-81af-cb8fa813a736">
-    <entity name="\ZF\OAuth2\Doctrine\Entity\Client" local-name="Client" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="0e40a98d-82ec-47f1-acc0-649982b1c48a">
+<skipper version="3.2.22.1624" mvc="Without MVC" orm="Doctrine2">
+  <module name="\api-skeletons/oauth2-doctrine" local-name="api-skeletons/oauth2-doctrine" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" local-namespace="ApiSkeletons\OAuth2\Doctrine\Entity" export-format="Doctrine2Xml" export-path="../config/orm" uuid="e33a902b-9096-46f4-81af-cb8fa813a736">
+    <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\Client" local-name="Client" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="0e40a98d-82ec-47f1-acc0-649982b1c48a">
       <field name="id" type="bigint" required="true" unique="true" primary="true" auto-increment="true" uuid="f24288d3-c5ab-4e4f-a251-0bca949873d1"/>
       <field name="clientId" type="string" size="191" uuid="5902288a-0d1f-44c0-a02c-19bc92de37b1"/>
       <field name="secret" type="string" uuid="1b0c7264-2fce-4217-9011-ddc42ee9afd2"/>
@@ -11,12 +11,12 @@
         <attribute name="table">Client_OAuth2</attribute>
       </orm-attributes>
     </entity>
-    <comment caption="Disconnected User" description="The ZF\OAuth2\Entity\User does not exist and should be replaced with a custom user entity with a client relation to dynamically assoicate them.  This is dynamically mapped and defined in the config." uuid="664daa50-d4a6-4d82-a35f-5eb5e2e8e7ca"/>
+    <comment caption="Disconnected User" description="The Laminas\ApiTools\OAuth2\Entity\User does not exist and should be replaced with a custom user entity with a client relation to dynamically assoicate them.  This is dynamically mapped and defined in the config." uuid="664daa50-d4a6-4d82-a35f-5eb5e2e8e7ca"/>
     <comment caption="Unique clientId" description="A unique index for clientId is required and added dynamically through the metadata subscriber.  It is not in the schema to allow for custom naming strategies." uuid="5e19d4fc-7756-4a50-9d4d-91a05aeabac2"/>
     <comment caption="Scope Fixture" description="The Scope entity is intended for use as a fixture.  You must manually assign an id to each scope." uuid="a24412f2-ffc8-48f6-bf21-a1843f47865d"/>
     <comment caption="Unique Scope name" description="A unique index for name is required and added dynamically through the metadata subscriber.  It is not in the schema to allow for custom naming strategies." uuid="df548641-cc75-4355-89a3-9e01d81b9d41"/>
-    <region namespace="\ZF\OAuth2\Doctrine\Entity" caption="Scope" uuid="98a49ed5-e644-4a4e-9b59-d5421643572a">
-      <entity name="\ZF\OAuth2\Doctrine\Entity\Scope" local-name="Scope" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="8cc40580-9611-471f-a6c7-9a64ec3b2869">
+    <region namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" caption="Scope" uuid="98a49ed5-e644-4a4e-9b59-d5421643572a">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\Scope" local-name="Scope" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="8cc40580-9611-471f-a6c7-9a64ec3b2869">
         <field name="id" type="bigint" required="true" unique="true" primary="true" uuid="c8033880-f92f-47e6-bbf8-e9f8a99299fb"/>
         <field name="scope" type="string" size="191" required="true" uuid="54d7a7b3-1ffc-44f5-a198-fcd2d1f14dd5"/>
         <field name="isDefault" type="boolean" uuid="944d76ea-159b-43fb-a182-5100908dfd7b"/>
@@ -24,28 +24,28 @@
           <attribute name="table">Scope_OAuth2</attribute>
         </orm-attributes>
       </entity>
-      <entity name="\ZF\OAuth2\Doctrine\Entity\ClientToScope" local-name="ClientToScope" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="fc3df9ba-7e50-4415-90d4-6009251c5942">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\ClientToScope" local-name="ClientToScope" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="fc3df9ba-7e50-4415-90d4-6009251c5942">
         <field name="client_id" type="bigint" required="true" primary="true" uuid="de2bac28-b8ac-4ee2-a53b-7cf47e7d137a"/>
         <field name="scope_id" type="bigint" required="true" primary="true" uuid="b3c31b74-7ac9-48dd-a7ba-844d788133ce"/>
         <orm-attributes>
           <attribute name="table">ClientToScope_OAuth2</attribute>
         </orm-attributes>
       </entity>
-      <entity name="\ZF\OAuth2\Doctrine\Entity\AuthorizationCodeToScope" local-name="AuthorizationCodeToScope" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="654eac84-7c6d-4280-9138-1658291dfb7e">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\AuthorizationCodeToScope" local-name="AuthorizationCodeToScope" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="654eac84-7c6d-4280-9138-1658291dfb7e">
         <field name="authorization_code_id" type="bigint" required="true" primary="true" uuid="f493d087-c62c-4575-9eff-8ec38940af06"/>
         <field name="scope_id" type="bigint" required="true" primary="true" uuid="837101ff-24c2-41a8-8266-66db04fc9a5b"/>
         <orm-attributes>
           <attribute name="table">AuthorizationCodeToScope_OAuth2</attribute>
         </orm-attributes>
       </entity>
-      <entity name="\ZF\OAuth2\Doctrine\Entity\RefreshTokenToScope" local-name="RefreshTokenToScope" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="d25ad9b3-1751-49e7-901d-a92fae42a8b2">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\RefreshTokenToScope" local-name="RefreshTokenToScope" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="d25ad9b3-1751-49e7-901d-a92fae42a8b2">
         <field name="refresh_token_id" type="bigint" required="true" primary="true" uuid="0461bc59-2d15-413b-96e7-1cf2d59fd38d"/>
         <field name="scope_id" type="bigint" required="true" primary="true" uuid="0cf2ddc4-4138-446c-9d9f-d744ab1aeddf"/>
         <orm-attributes>
           <attribute name="table">RefreshTokenToScope_OAuth2</attribute>
         </orm-attributes>
       </entity>
-      <entity name="\ZF\OAuth2\Doctrine\Entity\AccessTokenToScope" local-name="AccessTokenToScope" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="4f5f9113-1ca7-472d-ba02-7b178329ced8">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\AccessTokenToScope" local-name="AccessTokenToScope" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="4f5f9113-1ca7-472d-ba02-7b178329ced8">
         <field name="access_token_id" type="bigint" required="true" primary="true" uuid="f3480d3c-ab18-4c39-8e69-a5f6ac69ad41"/>
         <field name="scope_id" type="bigint" required="true" primary="true" uuid="88e6e6f2-2899-471d-8694-ff1b4f09ef93"/>
         <orm-attributes>
@@ -53,64 +53,64 @@
         </orm-attributes>
       </entity>
     </region>
-    <many-to-many mn-entity="\ZF\OAuth2\Doctrine\Entity\ClientToScope" uuid="1d7e8cae-9456-4602-a095-f2048b9303c4">
-      <many-to-many-entity name="\ZF\OAuth2\Doctrine\Entity\Scope" owning-side="true" alias="scope" uuid="5a9f1849-17bf-4479-9c06-dcd5e1784e90">
+    <many-to-many mn-entity="\ApiSkeletons\OAuth2\Doctrine\Entity\ClientToScope" uuid="1d7e8cae-9456-4602-a095-f2048b9303c4">
+      <many-to-many-entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\Scope" owning-side="true" alias="scope" uuid="5a9f1849-17bf-4479-9c06-dcd5e1784e90">
         <many-to-many-field from="scope_id" to="id" uuid="02e3e4ae-4bff-4ca5-b9e0-989b2d0eb9d8"/>
         <orm-attributes>
           <attribute name="on-delete">CASCADE</attribute>
         </orm-attributes>
       </many-to-many-entity>
-      <many-to-many-entity name="\ZF\OAuth2\Doctrine\Entity\Client" owning-side="false" alias="client" uuid="f71382dc-97f2-4398-a7fd-cd6155b23f83">
+      <many-to-many-entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\Client" owning-side="false" alias="client" uuid="f71382dc-97f2-4398-a7fd-cd6155b23f83">
         <many-to-many-field from="client_id" to="id" uuid="e118bd93-0f6d-411e-9dda-ec3b64983b6d"/>
         <orm-attributes>
           <attribute name="on-delete">CASCADE</attribute>
         </orm-attributes>
       </many-to-many-entity>
     </many-to-many>
-    <many-to-many mn-entity="\ZF\OAuth2\Doctrine\Entity\AuthorizationCodeToScope" uuid="609e9b50-11d4-4ba4-8e4e-37a0286c0358">
-      <many-to-many-entity name="\ZF\OAuth2\Doctrine\Entity\Scope" owning-side="true" alias="scope" uuid="d7fb61d0-fe82-458d-a2a6-5b4cc9065a49">
+    <many-to-many mn-entity="\ApiSkeletons\OAuth2\Doctrine\Entity\AuthorizationCodeToScope" uuid="609e9b50-11d4-4ba4-8e4e-37a0286c0358">
+      <many-to-many-entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\Scope" owning-side="true" alias="scope" uuid="d7fb61d0-fe82-458d-a2a6-5b4cc9065a49">
         <many-to-many-field from="scope_id" to="id" uuid="5f05011a-84ce-43ea-aa08-fd2cf97148d1"/>
         <orm-attributes>
           <attribute name="on-delete">CASCADE</attribute>
         </orm-attributes>
       </many-to-many-entity>
-      <many-to-many-entity name="\ZF\OAuth2\Doctrine\Entity\AuthorizationCode" owning-side="false" alias="authorizationCode" uuid="438b279b-99ed-4a90-9352-79845961ace6">
+      <many-to-many-entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\AuthorizationCode" owning-side="false" alias="authorizationCode" uuid="438b279b-99ed-4a90-9352-79845961ace6">
         <many-to-many-field from="authorization_code_id" to="id" uuid="c293e477-c36f-40a5-86ac-290beda9bff8"/>
         <orm-attributes>
           <attribute name="on-delete">CASCADE</attribute>
         </orm-attributes>
       </many-to-many-entity>
     </many-to-many>
-    <many-to-many mn-entity="\ZF\OAuth2\Doctrine\Entity\RefreshTokenToScope" uuid="7563f43f-925d-4df3-bfd3-d2bf1855a0ca">
-      <many-to-many-entity name="\ZF\OAuth2\Doctrine\Entity\Scope" owning-side="true" alias="scope" uuid="d69ad79d-983f-4cda-905f-1e084aefaff1">
+    <many-to-many mn-entity="\ApiSkeletons\OAuth2\Doctrine\Entity\RefreshTokenToScope" uuid="7563f43f-925d-4df3-bfd3-d2bf1855a0ca">
+      <many-to-many-entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\Scope" owning-side="true" alias="scope" uuid="d69ad79d-983f-4cda-905f-1e084aefaff1">
         <many-to-many-field from="scope_id" to="id" uuid="a76710e4-08eb-404b-bff9-975693931896"/>
         <orm-attributes>
           <attribute name="on-delete">CASCADE</attribute>
         </orm-attributes>
       </many-to-many-entity>
-      <many-to-many-entity name="\ZF\OAuth2\Doctrine\Entity\RefreshToken" owning-side="false" alias="refreshToken" uuid="216d4d0a-a391-4879-ad9e-d195d818dc27">
+      <many-to-many-entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\RefreshToken" owning-side="false" alias="refreshToken" uuid="216d4d0a-a391-4879-ad9e-d195d818dc27">
         <many-to-many-field from="refresh_token_id" to="id" uuid="bdd1fa11-e483-4207-9836-bc527a464404"/>
         <orm-attributes>
           <attribute name="on-delete">CASCADE</attribute>
         </orm-attributes>
       </many-to-many-entity>
     </many-to-many>
-    <many-to-many mn-entity="\ZF\OAuth2\Doctrine\Entity\AccessTokenToScope" uuid="d6c88e38-48c1-43d7-b5e9-b6902ee48e7c">
-      <many-to-many-entity name="\ZF\OAuth2\Doctrine\Entity\Scope" owning-side="true" alias="scope" uuid="391c57b9-1832-4a9a-b7fb-75b2c5c59ebf">
+    <many-to-many mn-entity="\ApiSkeletons\OAuth2\Doctrine\Entity\AccessTokenToScope" uuid="d6c88e38-48c1-43d7-b5e9-b6902ee48e7c">
+      <many-to-many-entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\Scope" owning-side="true" alias="scope" uuid="391c57b9-1832-4a9a-b7fb-75b2c5c59ebf">
         <many-to-many-field from="scope_id" to="id" uuid="ccc889ca-b48e-41a9-8744-257fc9fd83fc"/>
         <orm-attributes>
           <attribute name="on-delete">CASCADE</attribute>
         </orm-attributes>
       </many-to-many-entity>
-      <many-to-many-entity name="\ZF\OAuth2\Doctrine\Entity\AccessToken" owning-side="false" alias="accessToken" uuid="1a2f2f70-ba2a-49c8-a50c-ffe2206b4013">
+      <many-to-many-entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\AccessToken" owning-side="false" alias="accessToken" uuid="1a2f2f70-ba2a-49c8-a50c-ffe2206b4013">
         <many-to-many-field from="access_token_id" to="id" uuid="895f68cb-ba7c-4708-86f6-1f64eeb776c7"/>
         <orm-attributes>
           <attribute name="on-delete">CASCADE</attribute>
         </orm-attributes>
       </many-to-many-entity>
     </many-to-many>
-    <region namespace="\ZF\OAuth2\Doctrine\Entity" caption="Token" uuid="2842966b-796c-48f0-920e-74b0fc40ec24">
-      <entity name="\ZF\OAuth2\Doctrine\Entity\AccessToken" local-name="AccessToken" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="0cef011b-fcdf-4e6e-a813-2a8d49ba4748">
+    <region namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" caption="Token" uuid="2842966b-796c-48f0-920e-74b0fc40ec24">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\AccessToken" local-name="AccessToken" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="0cef011b-fcdf-4e6e-a813-2a8d49ba4748">
         <field name="id" type="bigint" required="true" unique="true" primary="true" auto-increment="true" uuid="b27267d6-52c7-4d23-b414-0dc5cf604105"/>
         <field name="accessToken" type="text" uuid="209f4728-d8cc-498b-808f-ecd7b473eaa6"/>
         <field name="expires" type="datetime" uuid="a1a27c78-6780-4bb9-882a-010170c2ab64"/>
@@ -119,7 +119,7 @@
           <attribute name="table">AccessToken_OAuth2</attribute>
         </orm-attributes>
       </entity>
-      <entity name="\ZF\OAuth2\Doctrine\Entity\RefreshToken" local-name="RefreshToken" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="8c75fc92-0e0a-43ed-b5dc-5859aba057ae">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\RefreshToken" local-name="RefreshToken" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="8c75fc92-0e0a-43ed-b5dc-5859aba057ae">
         <field name="id" type="bigint" required="true" unique="true" primary="true" auto-increment="true" uuid="7ac57601-29a0-493a-9728-ae22b8ea7b23"/>
         <field name="refreshToken" type="string" uuid="847e9b03-a76d-4bd9-9905-b241bac4faf1"/>
         <field name="expires" type="datetime" uuid="e1492093-51f1-4369-82ee-3e0711410879"/>
@@ -128,7 +128,7 @@
           <attribute name="table">RefreshToken_OAuth2</attribute>
         </orm-attributes>
       </entity>
-      <entity name="\ZF\OAuth2\Doctrine\Entity\AuthorizationCode" local-name="AuthorizationCode" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="1b40f6a9-e21a-49d3-8d44-604e36d28d35">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\AuthorizationCode" local-name="AuthorizationCode" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="1b40f6a9-e21a-49d3-8d44-604e36d28d35">
         <field name="id" type="bigint" required="true" unique="true" primary="true" auto-increment="true" uuid="72326417-df2b-42a0-b46d-298cdae4ff4d"/>
         <field name="authorizationCode" type="string" uuid="2a3c669d-f44f-4ef0-b283-118ca75eda38"/>
         <field name="redirectUri" type="text" uuid="dea2004d-47b5-4c53-b1e9-3347e16ab350"/>
@@ -140,26 +140,26 @@
         </orm-attributes>
       </entity>
     </region>
-    <association from="\ZF\OAuth2\Doctrine\Entity\AccessToken" to="\ZF\OAuth2\Doctrine\Entity\Client" owner-alias="accessToken" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="d9c8b226-5b7a-4991-adb8-f01509ffdc87">
+    <association from="\ApiSkeletons\OAuth2\Doctrine\Entity\AccessToken" to="\ApiSkeletons\OAuth2\Doctrine\Entity\Client" owner-alias="accessToken" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="d9c8b226-5b7a-4991-adb8-f01509ffdc87">
       <association-field from="client_id" to="id" uuid="6991d3c4-51d3-45b4-b4aa-f78ce7184d2d"/>
       <orm-attributes>
         <attribute name="on-delete">CASCADE</attribute>
       </orm-attributes>
     </association>
-    <association from="\ZF\OAuth2\Doctrine\Entity\RefreshToken" to="\ZF\OAuth2\Doctrine\Entity\Client" owner-alias="refreshToken" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="3efa4b07-67d5-48a1-94e8-69ad2a5bc60e">
+    <association from="\ApiSkeletons\OAuth2\Doctrine\Entity\RefreshToken" to="\ApiSkeletons\OAuth2\Doctrine\Entity\Client" owner-alias="refreshToken" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="3efa4b07-67d5-48a1-94e8-69ad2a5bc60e">
       <association-field from="client_id" to="id" uuid="9a155c06-37f3-4b21-8174-4224967732b3"/>
       <orm-attributes>
         <attribute name="on-delete">CASCADE</attribute>
       </orm-attributes>
     </association>
-    <association from="\ZF\OAuth2\Doctrine\Entity\AuthorizationCode" to="\ZF\OAuth2\Doctrine\Entity\Client" owner-alias="authorizationCode" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="2664c472-a222-4480-80e6-34943b78930f">
+    <association from="\ApiSkeletons\OAuth2\Doctrine\Entity\AuthorizationCode" to="\ApiSkeletons\OAuth2\Doctrine\Entity\Client" owner-alias="authorizationCode" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="2664c472-a222-4480-80e6-34943b78930f">
       <association-field from="client_id" to="id" uuid="8ffe8b13-b909-4b04-b4c6-42a38056b2a9"/>
       <orm-attributes>
         <attribute name="on-delete">CASCADE</attribute>
       </orm-attributes>
     </association>
-    <region namespace="\ZF\OAuth2\Doctrine\Entity" caption="Encryption" uuid="f75990b4-77ef-4d38-950e-631e3b3b8fbb">
-      <entity name="\ZF\OAuth2\Doctrine\Entity\Jwt" local-name="Jwt" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="9c143447-a1f4-4187-a5f9-45e768f78ebb">
+    <region namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" caption="Encryption" uuid="f75990b4-77ef-4d38-950e-631e3b3b8fbb">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\Jwt" local-name="Jwt" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="9c143447-a1f4-4187-a5f9-45e768f78ebb">
         <field name="id" type="bigint" required="true" unique="true" primary="true" auto-increment="true" uuid="02e228e3-4d24-4334-add3-3358482e75ea"/>
         <field name="subject" type="string" uuid="253a38fa-22dc-492f-8b3a-819481f3daec"/>
         <field name="publicKey" type="text" uuid="fd97023c-adb4-4715-9026-fa446ba12129"/>
@@ -168,7 +168,7 @@
           <attribute name="table">Jwt_OAuth2</attribute>
         </orm-attributes>
       </entity>
-      <entity name="\ZF\OAuth2\Doctrine\Entity\Jti" local-name="Jti" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="f42aa952-941d-4cec-adaf-5df5bc023867">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\Jti" local-name="Jti" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="f42aa952-941d-4cec-adaf-5df5bc023867">
         <field name="id" type="bigint" required="true" unique="true" primary="true" auto-increment="true" uuid="1e6f57e8-be62-4f52-9679-45be5681211c"/>
         <field name="subject" type="string" uuid="4248a4db-cb20-4de9-af74-0df6ff0cf7f8"/>
         <field name="audience" type="string" uuid="397557b3-5117-4ad6-9012-a46c809b93e3"/>
@@ -179,7 +179,7 @@
           <attribute name="table">Jti_OAuth2</attribute>
         </orm-attributes>
       </entity>
-      <entity name="\ZF\OAuth2\Doctrine\Entity\PublicKey" local-name="PublicKey" namespace="\ZF\OAuth2\Doctrine\Entity" uuid="b6562bcc-4fca-413e-a560-91da4d75dc9f">
+      <entity name="\ApiSkeletons\OAuth2\Doctrine\Entity\PublicKey" local-name="PublicKey" namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" uuid="b6562bcc-4fca-413e-a560-91da4d75dc9f">
         <field name="id" type="bigint" required="true" unique="true" primary="true" auto-increment="true" uuid="522217c1-f9e7-445d-a709-75c846b9724f"/>
         <field name="publicKey" type="text" uuid="25e4e0a0-f374-462e-acb1-80335f0f995a"/>
         <field name="privateKey" type="text" uuid="f20479d1-190f-42da-a99d-214515ccef6a"/>
@@ -191,25 +191,25 @@
       </entity>
       <comment caption="Audience" description="A Jti is a one-time token.  Per page 6 section 7 the OAuth2 server may maintain a list of Jwt which are used.  Per https://github.com/bshaffer/oauth2-server-php/pull/268#issuecomment-71499663 the use marker may be tracked in audience." uuid="05a610e1-fad6-4e65-8b59-c09ed14d78bb"/>
     </region>
-    <association from="\ZF\OAuth2\Doctrine\Entity\Jwt" to="\ZF\OAuth2\Doctrine\Entity\Client" owner-alias="jwt" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="6b2ceec2-f65b-4944-be20-613a797e5829">
+    <association from="\ApiSkeletons\OAuth2\Doctrine\Entity\Jwt" to="\ApiSkeletons\OAuth2\Doctrine\Entity\Client" owner-alias="jwt" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="6b2ceec2-f65b-4944-be20-613a797e5829">
       <association-field from="client_id" to="id" uuid="30a63a9a-ff9a-4528-b086-87112dff09bd"/>
       <orm-attributes>
         <attribute name="on-delete">CASCADE</attribute>
       </orm-attributes>
     </association>
-    <association from="\ZF\OAuth2\Doctrine\Entity\Jti" to="\ZF\OAuth2\Doctrine\Entity\Client" owner-alias="jti" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="1a897fc1-617e-4cc3-82b7-54f564d3335d">
+    <association from="\ApiSkeletons\OAuth2\Doctrine\Entity\Jti" to="\ApiSkeletons\OAuth2\Doctrine\Entity\Client" owner-alias="jti" inverse-alias="client" many-owner="true" many-inverse="false" parent-required="true" uuid="1a897fc1-617e-4cc3-82b7-54f564d3335d">
       <association-field from="client_id" to="id" uuid="4f7bc004-707a-47df-8713-f83b19efcc34"/>
       <orm-attributes>
         <attribute name="on-delete">CASCADE</attribute>
       </orm-attributes>
     </association>
-    <association from="\ZF\OAuth2\Doctrine\Entity\PublicKey" to="\ZF\OAuth2\Doctrine\Entity\Client" owner-alias="publicKey" inverse-alias="client" many-owner="false" many-inverse="false" parent-required="true" uuid="9daca6d8-8f09-4f97-bbfd-6db05bdf3e58">
+    <association from="\ApiSkeletons\OAuth2\Doctrine\Entity\PublicKey" to="\ApiSkeletons\OAuth2\Doctrine\Entity\Client" owner-alias="publicKey" inverse-alias="client" many-owner="false" many-inverse="false" parent-required="true" uuid="9daca6d8-8f09-4f97-bbfd-6db05bdf3e58">
       <association-field from="client_id" to="id" uuid="c6e07aba-9ecc-4e8f-ac02-b586184d9e7a"/>
       <orm-attributes>
         <attribute name="on-delete">CASCADE</attribute>
       </orm-attributes>
     </association>
-    <region namespace="\ZF\OAuth2\Doctrine\Entity" caption="Legend" uuid="244ca074-ff30-43f1-8fbe-fe598c7197a0">
+    <region namespace="\ApiSkeletons\OAuth2\Doctrine\Entity" caption="Legend" uuid="244ca074-ff30-43f1-8fbe-fe598c7197a0">
       <comment caption="Fixture" uuid="d1332131-0d0e-4828-9203-e72718424145"/>
       <comment caption="Comment" uuid="0177f8ca-e899-4464-bc00-e00d67748ade"/>
       <comment caption="Author" description="Tom H Anderson &#10;API Skeletons&#10;&lt;contact@apiskeletons.com&gt;" uuid="20696f21-eaef-41bb-ba17-9dc01d1bf8e3"/>

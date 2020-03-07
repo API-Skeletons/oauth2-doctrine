@@ -13,20 +13,35 @@ env:
 matrix: 
   fast_finish: true
   include:
-    - php: 7.1
+    - php: 7.2
+      env:
+        - DEPS=lowest
+    - php: 7.2
       env:
         - EXECUTE_COVERAGE=true
         - EXECUTE_CS_CHECK=true 
-        - DEPS=lowest
-    - php: 7.1
+        - DEPS=locked
+    - php: 7.2
       env:
         - DEPS=latest
-    - php: 7.2
     - php: 7.3
-
-notifications:
-  irc: "irc.freenode.org#apigility-dev"
-  email: false
+      env:
+        - DEPS=lowest
+    - php: 7.3
+      env:
+        - DEPS=locked
+    - php: 7.3
+      env:
+        - DEPS=latest
+    - php: 7.4
+      env:
+        - DEPS=lowest
+    - php: 7.4
+      env:
+        - DEPS=locked
+    - php: 7.4
+      env:
+        - DEPS=latest
 
 before_install:
   - if [[ $EXECUTE_COVERAGE != 'true' ]]; then phpenv config-rm xdebug.ini || return 0 ; fi
@@ -34,9 +49,9 @@ before_install:
   - chmod -R +rwX test/asset/data
 
 install:
+  - travis_retry composer install $COMPOSER_ARGS
   - if [[ $DEPS == 'latest' ]]; then travis_retry composer update $COMPOSER_ARGS ; fi
   - if [[ $DEPS == 'lowest' ]]; then travis_retry composer update --prefer-lowest --prefer-stable $COMPOSER_ARGS ; fi
-  - travis_retry composer install $COMPOSER_ARGS
   - composer show --installed
 
 script:

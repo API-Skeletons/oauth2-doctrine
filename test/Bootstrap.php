@@ -4,9 +4,9 @@
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
 
-namespace ZFTest\OAuth2\Doctrine;
+namespace ApiSkeletonsTest\OAuth2\Doctrine;
 
-use Zend\Loader\AutoloaderFactory;
+use Laminas\Loader\AutoloaderFactory;
 use RuntimeException;
 
 error_reporting(E_ALL | E_STRICT);
@@ -52,10 +52,10 @@ class Bootstrap
         } else {
             include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
             AutoloaderFactory::factory(array(
-                'Zend\Loader\StandardAutoloader' => array(
+                'Laminas\Loader\StandardAutoloader' => array(
                     'autoregister_zf' => true,
                     'namespaces' => array(
-                        'ZF\OAuth2' => __DIR__ . '/../src/',
+                        'Laminas\ApiTools\OAuth2' => __DIR__ . '/../src/',
                         __NAMESPACE__ => __DIR__,
                     ),
                 ),
