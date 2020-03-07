@@ -41,16 +41,16 @@ class Bootstrap
             return;
         }
 
-        $zf2Path = getenv('ZF2_PATH') ?: (defined('ZF2_PATH') ? ZF2_PATH : (is_dir($vendorPath . '/ZF2/library') ? $vendorPath . '/ZF2/library' : false));
+        $laminasPath = getenv('LAMINAS_PATH') ?: (defined('LAMINAS_PATH') ? LAMINAS_PATH : (is_dir($vendorPath . '/LAMINAS/library') ? $vendorPath . '/LAMINAS/library' : false));
 
-        if (!$zf2Path) {
-            throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.');
+        if (!$laminasPath) {
+            throw new RuntimeException('Unable to load LAMINAS. Run `php composer.phar install` or define a LAMINAS_PATH environment variable.');
         }
 
         if (isset($loader)) {
-            $loader->add('Zend', $zf2Path . '/Zend');
+            $loader->add('Zend', $laminasPath . '/Zend');
         } else {
-            include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
+            include $laminasPath . '/Zend/Loader/AutoloaderFactory.php';
             AutoloaderFactory::factory(array(
                 'Laminas\Loader\StandardAutoloader' => array(
                     'autoregister_zf' => true,
