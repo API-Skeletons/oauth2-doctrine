@@ -6,7 +6,7 @@
 $userEntity = 'Testing\Entity\User';
 
 return [
-    'api-skeletons-oauth2-doctrine' => [
+    'apiskeletons-oauth2-doctrine' => [
         'default' => [
             'object_manager' => 'doctrine.entitymanager.orm_default',
             'event_manager' => 'doctrine.eventmanager.orm_default',

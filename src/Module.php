@@ -55,7 +55,7 @@ class Module implements
                 'oauth2.doctrineadapter.default' => function ($serviceManager) {
                     /** @var ServiceLocatorInterface | ContainerInterface $serviceManager */
                     $globalConfig = $serviceManager->get('Config');
-                    $config = new Config($globalConfig['api-skeletons-oauth2-doctrine']['default']);
+                    $config = new Config($globalConfig['apiskeletons-oauth2-doctrine']['default']);
                     /** @var DoctrineAdapterFactory $factory */
                     $factory = $serviceManager->get(DoctrineAdapterFactory::class);
                     $factory->setConfig($config);
