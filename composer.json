@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "laminas-api-tools/api-tools-oauth2": "^1.4",
+        "laminas-api-tools/api-tools-oauth2": "^1.9",
         "doctrine/doctrine-orm-module": "^4.0 || ^5.0",
         "laminas-api-tools/api-tools-mvc-auth": "^1.5.1",
         "laminas/laminas-mvc": "^3.1",
