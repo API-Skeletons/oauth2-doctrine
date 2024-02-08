@@ -707,7 +707,9 @@ class DoctrineAdapter implements
         $redirect_uri,
         $expires,
         $scope = null,
-        $id_token = null
+        $id_token = null,
+        $code_challenge = null,
+        $code_challenge_method = null
     ) {
         $results = $this->getEventManager()->trigger(
             __FUNCTION__,
@@ -720,6 +722,8 @@ class DoctrineAdapter implements
                 'expires' => $expires,
                 'scope ' => $scope,
                 'id_token ' => $id_token,
+                'code_challenge ' => $code_challenge,
+                'code_challenge_method ' => $code_challenge_method,
             ]
         );
         if ($results->stopped()) {
