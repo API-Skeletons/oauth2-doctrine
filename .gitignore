@@ -8,3 +8,4 @@ build
 /deployment.properties
 /deployment.xml
 test/asset/orm-autoload/oauth2.doctrine-orm.global.php
+composer.lock

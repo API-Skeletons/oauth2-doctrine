@@ -1,5 +1,7 @@
 <?php
 
+use Doctrine\DBAL\Driver\SQLite3\Driver;
+
 return [
     'api-tools-mvc-auth' => [
         'authentication' => [
@@ -20,7 +22,7 @@ return [
     'doctrine' => [
         'connection' => [
             'orm_default' => [
-                'driverClass' => 'Doctrine\DBAL\Driver\PDO\Sqlite\Driver',
+                'driverClass' => Driver::class,
                 'params' => [
                     'memory' => 'true',
                 ],
