@@ -20,7 +20,7 @@ return [
     'doctrine' => [
         'connection' => [
             'orm_default' => [
-                'driverClass' => 'Doctrine\DBAL\Driver\PDO\Sqlite\Driver',
+                'driverClass' => 'Doctrine\DBAL\Driver\SQLite3\Driver',
                 'params' => [
                     'memory' => 'true',
                 ],
