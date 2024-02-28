@@ -708,8 +708,8 @@ class DoctrineAdapter implements
         $expires,
         $scope = null,
         $id_token = null,
-        $code_challenge = null, 
-        $code_challenge_method = null        
+        $code_challenge = null,
+        $code_challenge_method = null
     ) {
         $results = $this->getEventManager()->trigger(
             __FUNCTION__,
