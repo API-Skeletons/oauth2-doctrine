@@ -36,7 +36,7 @@ jobs:
           fetch-depth: 2
 
       - name: "Install PHP"
-        uses: "shivammathur/setup-php@v4"
+        uses: "shivammathur/setup-php@2"
         with:
           php-version: "${{ matrix.php-version }}"
           coverage: "pcov"
@@ -44,7 +44,7 @@ jobs:
           extensions: "pdo_mysql"
 
       - name: "Install dependencies with Composer"
-        uses: "ramsey/composer-install@v1"
+        uses: "ramsey/composer-install@v2"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
           composer-options: "--prefer-dist"
