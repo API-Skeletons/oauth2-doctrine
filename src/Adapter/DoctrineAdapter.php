@@ -722,6 +722,8 @@ class DoctrineAdapter implements
                 'expires' => $expires,
                 'scope ' => $scope,
                 'id_token ' => $id_token,
+                'code_challenge ' => $code_challenge,
+                'code_challenge_method ' => $code_challenge_method,
             ]
         );
         if ($results->stopped()) {

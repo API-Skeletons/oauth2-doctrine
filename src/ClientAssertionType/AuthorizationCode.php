@@ -16,26 +16,26 @@ class AuthorizationCode implements
     ArraySerializableInterface,
     ClientAssertionTypeInterface
 {
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         // @codeCoverageIgnoreStart
         $this->$offset = $value;
     }
         // CodeCoverageIgnoreEnd
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->$offset);
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         // @codeCoverageIgnoreStart
         throw new \Exception('not implemented');
     }
         // @codeCoverageIgnoreEnd
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->$offset) ? $this->$offset : null;
     }

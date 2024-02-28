@@ -133,6 +133,10 @@ class AbstractMapper implements
                     }
                     break;
                 case 'collection':
+                    if ($value === null) {
+                        break;
+                    }
+
                     $oAuth2String = [];
                     $fieldValues = explode(' ', $value);
                     /** @var QueryBuilder $queryBuilder */
