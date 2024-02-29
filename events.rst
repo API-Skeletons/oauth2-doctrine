@@ -55,4 +55,4 @@ Example Event Attachment
 .. include:: footer.rst
 
 .. raw:: html
-    :file: ../analytics.html
+    :file: analytics.html
